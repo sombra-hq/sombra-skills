@@ -10,7 +10,7 @@ Works with Claude Code, Claude Desktop, Claude.ai, ChatGPT, OpenCode, and any MC
 
 ```
 /plugin marketplace add sombra-hq/sombra-skills
-/plugin install sombra@sombra-hq-claude-code
+/plugin install sombra
 ```
 
 ### Claude Desktop & Claude.ai
