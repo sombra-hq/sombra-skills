@@ -1,0 +1,9 @@
+{
+  "plugins": [
+    {
+      "name": "sombra",
+      "path": ".",
+      "description": "Living documentation and research workflows powered by Sombra"
+    }
+  ]
+}
