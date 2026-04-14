@@ -46,6 +46,10 @@ On first use, you'll be prompted to connect your Sombra account via OAuth. Free 
 
 ## Skills
 
+### General usage
+
+Sombra tools activate automatically when you mention research, collections, saving, or looking something up. Save web pages, browse your library, distil collections — no slash command needed.
+
 ### `/sombra:project` — Living project tracker
 
 Track any multi-phase effort across conversations: house purchase, renovation, content strategy, product launch, learning goals. Works in Claude Desktop, Claude.ai, ChatGPT, and Claude Code.
@@ -97,6 +101,7 @@ Updates are surgical (`replace_context_section`) rather than full rewrites, so y
 
 | Skill | Works in |
 |-------|----------|
+| `guide` | Claude Desktop, Claude.ai, ChatGPT, Claude Code, OpenCode, any MCP client |
 | `project` | Claude Desktop, Claude.ai, ChatGPT, Claude Code, OpenCode, any MCP client |
 | `spec` | Claude Code, OpenCode (requires git + file access) |
 | `resume` | Everywhere (adapts — git-aware in repos, plain status elsewhere) |
