@@ -1,9 +1,16 @@
 {
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "sombra-skills",
+  "description": "Living documentation and research skills powered by Sombra",
+  "owner": {
+    "name": "Flarework",
+    "email": "dan@flarework.com"
+  },
   "plugins": [
     {
       "name": "sombra",
-      "path": ".",
-      "description": "Living documentation and research workflows powered by Sombra"
+      "description": "Living documentation and research workflows powered by Sombra",
+      "source": "."
     }
   ]
 }
