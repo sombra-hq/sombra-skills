@@ -1,4 +1,4 @@
-# Sombra Plugin
+# Sombra Skills
 
 Living documentation that persists across conversations. Track projects, manage feature specs, and build technical references — all stored in [Sombra](https://sombra.so) so you can pick up exactly where you left off.
 
@@ -9,7 +9,7 @@ Works with Claude Code, Claude Desktop, Claude.ai, ChatGPT, OpenCode, and any MC
 ### Claude Code
 
 ```
-/plugin marketplace add sombra-hq/claude-code
+/plugin marketplace add sombra-hq/sombra-skills
 /plugin install sombra@sombra-hq-claude-code
 ```
 
