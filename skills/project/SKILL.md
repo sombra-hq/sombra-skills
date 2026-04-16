@@ -92,13 +92,27 @@ When the item's requirements change, update the artifact. The tracker line stays
 
 Before every update, run through the pre-flight checklist in [format.md](references/format.md).
 
-## At natural breakpoints
+## Keeping the tracker current
 
-When the user reports progress or you've helped them complete something, proactively offer to update the project:
+Update the tracker as work happens — don't wait to be asked.
 
-> "Sounds like HP-3 and HP-4 are done. Want me to check those off and note any decisions?"
+### Triggers
 
-If the user confirms, update. If they add context ("actually the solicitor flagged an issue with the title"), capture that in Decisions too.
+Act on these signals immediately:
+
+- **Completion reported** — the user says something is done, finished, sorted, or handled → mark the item(s) complete
+- **Plan changed** — the user describes a new direction, shifted priority, or dropped item → update the phase and log a decision
+- **New detail surfaced** — the user shares information that affects an open item (a quote, a date, a contact, a constraint) → update the item's reference hint, or create a supporting artifact if the detail is substantial
+- **Batch of work finished** — after helping the user work through several items in a conversation → update all affected items at once
+
+### How
+
+1. `read_collection_context` to get current state
+2. `replace_context_section` for affected phase(s), `append_to_context` for decisions
+3. Update Meta (`Updated` date, `Next` counter if items were added)
+4. Tell the user what you changed: "Marked HP-3 and HP-4 complete. Logged the solicitor decision."
+
+Update first, report after. The user can correct if something's wrong — but the default is action, not asking permission.
 
 ## Evolving the project
 

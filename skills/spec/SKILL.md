@@ -68,17 +68,25 @@ Every item should reference the relevant code path:
 
 Use the most specific path you know. A file is better than a directory, but a directory is better than nothing.
 
-### 3. Commit-based progress detection
+### 3. Git-triggered tracker updates
 
-At natural breakpoints — after finishing a task, before a commit, when the user pauses — check the git log for evidence of completed items:
+Update the tracker when git events signal progress — don't ask, just update and report.
 
-```
-git log --oneline -10
-```
+**After a successful commit** (`git commit` returns without error):
+1. Compare the commit message and changed files against open spec items
+2. Mark matching items complete
+3. Report: "Marked AR-3 complete based on commit `abc1234`."
 
-Compare commit messages and changed files against open spec items. If something looks done, propose checking it off:
+**After a PR merge** (`gh pr merge` succeeds, or the user says "that's merged"):
+1. Identify which spec items the PR covers
+2. Mark them complete
+3. Report what was updated
 
-> "Based on the last 3 commits, AR-1 and AR-2 look complete. Want me to check those off?"
+**When implementation diverges** (different approach taken, requirement was wrong, item was split):
+1. Update the affected items
+2. Log a decision explaining what changed and why
+
+These updates happen at the completion of the current task — after the commit lands, after the PR is created — not mid-implementation.
 
 ### 4. Code verification
 

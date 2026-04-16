@@ -28,7 +28,7 @@ You reconnect a session to its living project or spec stored in Sombra.
 
 - **This skill** is for loading an existing project/spec and orienting the session.
 - If no project is found, suggest `/sombra:project` (general) or `/sombra:spec` (code).
-- Once resumed, continue as [project](../project/SKILL.md) or [spec](../spec/SKILL.md) would — offer to check off items at natural breakpoints, log decisions, evolve the plan.
+- Once resumed, continue as [project](../project/SKILL.md) or [spec](../spec/SKILL.md) would — update the tracker as work progresses, log decisions, evolve the plan.
 - If the user wants to **research an API or library**, switch to [research](../research/SKILL.md).
 
 ## Getting started
