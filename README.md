@@ -62,7 +62,7 @@ Creates a Sombra collection with structured phases, checkboxes, a decisions log,
 
 ### `/sombra:spec` — Living feature spec
 
-Everything in `project`, plus git branch context, code path references, and commit-based progress detection. For software features. Requires git access (Claude Code).
+Everything in `project`, plus git branch context, code path references, and automatic tracker updates from git events. For software features. Requires git access (Claude Code).
 
 ```
 /sombra:spec Auth Rework
@@ -77,6 +77,15 @@ Loads an existing project or spec, shows what's changed, and highlights the next
 ```
 /sombra:resume
 /sombra:resume Auth Rework
+```
+
+### `/sombra:update` — Force-sync a tracker
+
+Push updates into an existing project or spec tracker. Gathers signals from your input, git history, and conversation context, then marks items complete, adds new items, logs decisions, and creates supporting artifacts in one pass.
+
+```
+/sombra:update batch 4 done, KR-6 cancelled — plumber unavailable
+/sombra:update priorities shifted, AR-5 is now P0
 ```
 
 ### `/sombra:research` — Build a technical reference
@@ -104,6 +113,7 @@ Updates are surgical (`replace_context_section`) rather than full rewrites, so y
 | `guide` | Claude Desktop, Claude.ai, ChatGPT, Claude Code, OpenCode, any MCP client |
 | `project` | Claude Desktop, Claude.ai, ChatGPT, Claude Code, OpenCode, any MCP client |
 | `spec` | Claude Code, OpenCode (requires git + file access) |
+| `update` | Everywhere (adapts — git-aware in repos, user-input elsewhere) |
 | `resume` | Everywhere (adapts — git-aware in repos, plain status elsewhere) |
 | `research` | Anywhere with web search access |
 
