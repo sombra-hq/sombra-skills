@@ -34,3 +34,14 @@ In a spec, item references are code paths using the arrow-backtick format:
 ```
 
 Use the most specific path you know. These paths serve double duty: they orient the agent AND enable verification (does the file exist? does it do what the spec says?).
+
+## Supporting artifact references
+
+When an item's spec is too detailed for the one-line format, create a supporting artifact:
+
+```markdown
+- [ ] AR-5 — Auth token migration → spec: "AR-5: Token Migration Spec" | `src/mnp/auth/`
+- [ ] AR-8 — Permission model overhaul → spec: "AR-8: Permission Model Spec" | `src/mnp/auth/perms.clj`
+```
+
+The artifact holds the full spec (behavioral requirements, file paths, before/after examples, acceptance criteria). The tracker line stays scannable. Simple items still use inline path references only.

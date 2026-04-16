@@ -90,6 +90,25 @@ When resuming or auditing a spec, you can verify items by checking whether the r
 
 This helps catch specs that have drifted from reality.
 
+### 5. Supporting artifacts for complex items
+
+Spec items frequently exceed a one-line description — a component overhaul with multiple presentation modes, a migration with find-and-replace rules, a refactor touching many files with specific behavioral changes.
+
+Follow the project skill's supporting artifact pattern. For specs, the artifact should include:
+
+- Full behavioral spec or requirements
+- Relevant code paths and file listings
+- Before/after examples where applicable
+- Acceptance criteria
+
+Create the artifact when the item is added to the tracker, not later. Reference it from the tracker line:
+
+```markdown
+- [ ] AR-5 — Auth token migration → spec: "AR-5: Token Migration Spec" | `src/mnp/auth/`
+```
+
+Note the dual reference: spec artifact for the full requirements, backtick path for the primary code location. Both serve different resumption needs.
+
 ## Everything else
 
 For initializing, updating, decisions, open questions, and evolving the spec — follow [project](../project/SKILL.md). The workflow is identical; spec just adds the code-specific layers above.

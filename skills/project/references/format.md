@@ -65,6 +65,17 @@ Every item should include a relevant reference where applicable — a contact, l
 
 Use whatever reference helps the most when picking this item up in a future session.
 
+## Supporting artifact references
+
+When an item's detail exceeds what fits in a one-line reference hint, create a supporting artifact in the same collection and reference it:
+
+```markdown
+- [ ] HP-7 — Negotiate post-survey repairs → detail: "HP-7: Repair Negotiation Strategy"
+- [ ] CS-3 — Develop tone of voice guide → detail: "CS-3: Tone of Voice Guide"
+```
+
+The artifact name follows `{PREFIX}-{N}: {title}` for easy discovery. The tracker line stays concise; the artifact holds the depth. Simple items still use inline reference hints — only create artifacts when the detail genuinely can't fit.
+
 ## Checkbox conventions (GHFM)
 
 ```markdown

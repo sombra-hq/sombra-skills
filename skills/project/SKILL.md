@@ -51,6 +51,36 @@ If a Sombra tool call fails with an auth or connection error, guide the user:
 4. **Generate the prefix.** 2-3 uppercase letters from the project name (e.g., "House Purchase" → `HP`). Items get monotonically increasing numbers: `HP-1`, `HP-2`, `HP-3`. Track the next number in the Meta section. See [format.md](references/format.md) for the full format.
 5. **Write the context document.** Follow the structure in [format.md](references/format.md) exactly. Every section must use a unique `##` heading.
 
+## Supporting artifacts for complex items
+
+The tracker context must stay concise — checklist items with status, one-line descriptions, and reference hints. But some items carry detail that won't survive compression into a single line. When that happens, create a **supporting artifact** with the full spec and reference it from the tracker.
+
+### When an item needs its own artifact
+
+Create one when the item has any of:
+
+- Multiple coordinated steps that must happen in sequence
+- Specific requirements, criteria, or constraints that shape how it's done
+- Reference material — contacts, quotes, comparisons, examples, or measurements
+- Dependencies on other items or external events
+
+The test: **could someone pick this item up cold from just the checklist line?** If not, the missing detail belongs in a supporting artifact.
+
+### How
+
+1. **Create the artifact** in the same collection. Name it `{PREFIX}-{N}: {descriptive title}` (e.g., "HP-7: Repair Negotiation Strategy").
+2. **Write the full spec** as the artifact body — all the detail that won't fit in the tracker line.
+3. **Reference it from the tracker** using the `→ spec artifact` pattern:
+
+   ```markdown
+   - [ ] HP-7 — Negotiate post-survey repairs → detail: "HP-7: Repair Negotiation Strategy"
+   - [ ] HP-12 — Insurance comparison → detail: "HP-12: Insurance Requirements"
+   ```
+
+4. **Do this when the item is added**, not as a later cleanup step. The detail is freshest at that point.
+
+When the item's requirements change, update the artifact. The tracker line stays stable; the artifact holds the evolving detail.
+
 ## Updating an existing project
 
 1. **Read first.** Always `read_collection_context` before making changes.
