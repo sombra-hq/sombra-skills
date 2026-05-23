@@ -1,7 +1,7 @@
 ---
-name: resume
-description: Resume work on a project or feature by loading its living tracker from Sombra. Shows progress and highlights what's next. Adapts to context — uses git awareness in code environments, plain status elsewhere. Use when starting a session to continue previous work, or "where was I", "resume", "what's next".
-when_to_use: "resume, where was I, continue, load project, pick up where I left off, what's next, what's remaining"
+name: pickup
+description: Pick up work on a project or feature by loading its living tracker from Sombra. Shows progress and highlights what's next. Adapts to context — uses git awareness in code environments, plain status elsewhere. Use when starting a session to continue previous work, or "where was I", "resume", "pick up", "what's next".
+when_to_use: "pick up, pickup, resume, where was I, continue, load project, pick up where I left off, what's next, what's remaining"
 argument-hint: "[project name, feature name, or branch — defaults to current branch if in a git repo]"
 allowed-tools:
 
@@ -20,15 +20,15 @@ allowed-tools:
   - Glob
 ---
 
-# Resume — Sombra
+# Pickup — Sombra
 
-You reconnect a session to its living project or spec stored in Sombra.
+Reconnect a session to its living project or spec stored in Sombra.
 
 ## Skill boundaries
 
 - **This skill** is for loading an existing project/spec and orienting the session.
 - If no project is found, suggest `/sombra:project` (general) or `/sombra:spec` (code).
-- Once resumed, continue as [project](../project/SKILL.md) or [spec](../spec/SKILL.md) would — update the tracker as work progresses, log decisions, evolve the plan.
+- Once picked up, continue as [project](../project/SKILL.md) or [spec](../spec/SKILL.md) would — update the tracker as work progresses, log decisions, evolve the plan.
 - If the user wants to **research an API or library**, switch to [research](../research/SKILL.md).
 
 ## Getting started
@@ -42,7 +42,7 @@ Jump straight into the workflow below. If a Sombra tool call fails with an auth 
 Determine what to search for:
 - If `$ARGUMENTS` is provided, search for that
 - If in a git repo (Bash tools available), try `git branch --show-current` as a search term
-- Otherwise, ask the user what project they want to resume
+- Otherwise, ask the user what project they want to pick up
 
 Search Sombra:
 - `search_artifacts` for the project/branch name (appears in `## Meta`)
@@ -83,7 +83,7 @@ Present a concise status:
 
 **Code spec format:**
 ```
-## Resuming: Auth Rework
+## Picking up: Auth Rework
 Collection: Auth Rework | Branch: dan/auth-rework
 
 ### Progress
@@ -105,7 +105,7 @@ AR-3: Implement token refresh handling
 
 **General project format:**
 ```
-## Resuming: House Purchase — 14 Elm Street
+## Picking up: House Purchase — 14 Elm Street
 Collection: House Purchase — 14 Elm Street
 
 ### Progress
@@ -127,7 +127,7 @@ Highlight the **next actionable item**. For code specs, if commits suggest items
 
 ### 5. Stay connected
 
-After resuming, the project is loaded in context. Continue as [project](../project/SKILL.md) or [spec](../spec/SKILL.md) would.
+Once the project is loaded in context, continue as [project](../project/SKILL.md) or [spec](../spec/SKILL.md) would.
 
 ## Arguments
 

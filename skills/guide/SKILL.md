@@ -4,7 +4,7 @@ description: >
   General-purpose Sombra usage — saving web pages, browsing collections, distilling
   context, and working with your research library. Use when the user mentions research,
   documentation, collections, context, saving, or looking something up, and no specific
-  workflow skill (project, spec, resume, research) applies.
+  workflow skill (project, spec, pickup, research) applies.
 when_to_use: "save this, look up, check my collections, browse, distil, save url, what's in sombra, search library"
 disable-model-invocation: false
 allowed-tools:
@@ -42,7 +42,7 @@ This skill covers **general Sombra usage** — saving, browsing, searching, dist
 
 - **Track a project** (house purchase, renovation, content strategy) → [project](../project/SKILL.md)
 - **Track a software feature** with git context → [spec](../spec/SKILL.md)
-- **Resume where you left off** → [resume](../resume/SKILL.md)
+- **Pick up where you left off** → [pickup](../pickup/SKILL.md)
 - **Deep API/library research** → [research](../research/SKILL.md)
 
 ## Core workflow

@@ -40,7 +40,7 @@ Build persistent, distilled technical references using Sombra as your knowledge 
 
 - **This skill** is for researching technologies, APIs, and libraries.
 - If the user wants to **track feature progress**, switch to [spec](../spec/SKILL.md).
-- If the user wants to **resume work** on an existing feature, switch to [resume](../resume/SKILL.md).
+- If the user wants to **pick up work** on an existing feature, switch to [pickup](../pickup/SKILL.md).
 
 ## Getting started
 
