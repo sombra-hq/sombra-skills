@@ -88,6 +88,14 @@ Push updates into an existing project or spec tracker. Gathers signals from your
 /sombra:update priorities shifted, AR-5 is now P0
 ```
 
+### `/sombra:verify-distill` — Verify a distilled context
+
+Scan a collection's distilled context, classify every substantive claim against the saved sources (anchored, loose, uncited), and walk through cleaning up the unsourced ones. Anchored and loose proposals are reviewed in the Sombra app; this skill handles the report and the unsourced-claim cleanup the app can't.
+
+```
+/sombra:verify-distill Lacinia GraphQL Reference
+```
+
 ### `/sombra:research` — Build a technical reference
 
 Deep research on APIs, libraries, and frameworks. Saves sources to Sombra, distils them into a dense context document that any agent can load to write correct code without stale training data.
@@ -115,6 +123,7 @@ Updates are surgical (`replace_context_section`) rather than full rewrites, so y
 | `spec` | Claude Code, OpenCode (requires git + file access) |
 | `update` | Everywhere (adapts — git-aware in repos, user-input elsewhere) |
 | `pickup` | Everywhere (adapts — git-aware in repos, plain status elsewhere) |
+| `verify-distill` | Claude Desktop, Claude.ai, ChatGPT, Claude Code, OpenCode, any MCP client |
 | `research` | Anywhere with web search access |
 
 ## Requirements
