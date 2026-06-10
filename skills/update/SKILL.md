@@ -33,7 +33,7 @@ For the tracker format and rules, load the project [format.md](../project/refere
 
 - **This skill** is for pushing updates into an existing tracker.
 - If no tracker exists, suggest `/sombra:project` (general) or `/sombra:spec` (code).
-- If the user wants to **resume** and orient before working, use [resume](../resume/SKILL.md).
+- If the user wants to **pick up** and orient before working, use [pickup](../pickup/SKILL.md).
 - If the user wants to **create a new project**, use [project](../project/SKILL.md) or [spec](../spec/SKILL.md).
 
 ## Workflow

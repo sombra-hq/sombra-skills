@@ -34,7 +34,7 @@ Load [format.md](references/format.md) for the code-specific format extensions. 
 
 - **This skill** is for software features with git branches and code paths.
 - For **non-code projects** (renovation, content strategy, etc.), use [project](../project/SKILL.md) instead.
-- If the user wants to **resume** an existing spec, switch to [resume](../resume/SKILL.md).
+- If the user wants to **pick up** an existing spec, switch to [pickup](../pickup/SKILL.md).
 - If the user wants to **research an API or library**, switch to [research](../research/SKILL.md).
 
 ## What spec adds to project

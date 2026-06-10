@@ -70,13 +70,13 @@ Everything in `project`, plus git branch context, code path references, and auto
 
 Tracks which branch, which files, which items are done — and can cross-reference your git log to suggest what to check off.
 
-### `/sombra:resume` — Pick up where you left off
+### `/sombra:pickup` — Pick up where you left off
 
 Loads an existing project or spec, shows what's changed, and highlights the next step. Adapts automatically — git-aware in a repo, plain status report elsewhere.
 
 ```
-/sombra:resume
-/sombra:resume Auth Rework
+/sombra:pickup
+/sombra:pickup Auth Rework
 ```
 
 ### `/sombra:update` — Force-sync a tracker
@@ -122,7 +122,7 @@ Updates are surgical (`replace_context_section`) rather than full rewrites, so y
 | `project` | Claude Desktop, Claude.ai, ChatGPT, Claude Code, OpenCode, any MCP client |
 | `spec` | Claude Code, OpenCode (requires git + file access) |
 | `update` | Everywhere (adapts — git-aware in repos, user-input elsewhere) |
-| `resume` | Everywhere (adapts — git-aware in repos, plain status elsewhere) |
+| `pickup` | Everywhere (adapts — git-aware in repos, plain status elsewhere) |
 | `verify-distill` | Claude Desktop, Claude.ai, ChatGPT, Claude Code, OpenCode, any MCP client |
 | `research` | Anywhere with web search access |
 

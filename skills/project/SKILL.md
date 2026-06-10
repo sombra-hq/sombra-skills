@@ -29,7 +29,7 @@ Load [format.md](references/format.md) for the exact format, heading rules, item
 
 - **This skill** is for creating, updating, and managing any project.
 - For **software features** with git branches and code paths, use [spec](../spec/SKILL.md) instead — it extends this skill with code-specific context.
-- If the user wants to **resume** an existing project (e.g., "where was I"), switch to [resume](../resume/SKILL.md).
+- If the user wants to **pick up** an existing project (e.g., "where was I"), switch to [pickup](../pickup/SKILL.md).
 - If the user wants to **research a topic**, switch to [research](../research/SKILL.md).
 
 ## Getting started

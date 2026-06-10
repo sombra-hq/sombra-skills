@@ -20,7 +20,7 @@ A spec's Meta section extends the project Meta with git context:
 
 | Field | Purpose |
 |-------|---------|
-| **Branch** | Current git branch. Used by `/sombra:resume` to reconnect. |
+| **Branch** | Current git branch. Used by `/sombra:pickup` to reconnect. |
 | **Repo** | Repository name (from `git remote get-url origin`). Disambiguates when multiple repos exist. |
 | **Key paths** | Top-level directories relevant to this feature. Helps future agents orient. |
 
