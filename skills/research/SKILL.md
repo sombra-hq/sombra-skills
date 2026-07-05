@@ -13,7 +13,6 @@ allowed-tools:
 
   - mcp__claude_ai_Sombra__browse_collections
   - mcp__claude_ai_Sombra__create_collection
-  - mcp__claude_ai_Sombra__read_collection
   - mcp__claude_ai_Sombra__read_collection_context
   - mcp__claude_ai_Sombra__write_collection_context
   - mcp__claude_ai_Sombra__replace_context_section
@@ -35,6 +34,8 @@ allowed-tools:
 # API & Library Research — Sombra
 
 Build persistent, distilled technical references using Sombra as your knowledge layer. The goal is a living collection whose distilled context contains everything an agent needs to write correct code — without relying on training data that may be stale.
+
+The context is built and maintained **incrementally**: a structured skeleton of `##` sections, updated one source at a time with `replace_context_section`. Load [format.md](references/format.md) for the skeleton, the Sources ledger, and heading rules.
 
 ## Skill boundaries
 
@@ -82,31 +83,41 @@ For each useful source:
 
 1. Save it to Sombra with `save_url`
 2. Move it into the collection (create one if needed — scope tightly: "Datomic Client API" not "Databases")
-3. Briefly note what the source covers and why it matters
+3. Register it in the `## Sources` ledger as `(saved {date})` — batch the ledger update per collection round with one `replace_context_section`, not one write per source. If the context doesn't exist yet, hold the lines and write them as part of the skeleton in Phase 4.
+
+The ledger line at save time is what makes distillation resumable: there's no MCP tool that lists a collection's artifacts without their full content, so the context itself tracks what's been collected.
 
 Aim for **5-15 high-quality sources**. Every source should earn its place by contributing something the others don't.
 
-### Phase 4: Distil
+### Phase 4: Distil — one source at a time
 
-Read the full collection content, then write a distilled context that captures:
+**Never read the whole collection in one call.** A full-collection read over MCP truncates silently on collections this size, and the distill ends up built from a partial read. Work incrementally instead:
 
-- **Core concepts** — The mental model. Key abstractions and how they relate.
-- **API surface** — Function signatures, key methods, constructor patterns. **Preserve verbatim** — this is what agents need to write correct code.
-- **Configuration** — Required config, environment variables, connection strings. Verbatim.
-- **Code patterns** — Idiomatic usage examples. Verbatim.
-- **Gotchas** — Breaking changes, common mistakes, version-specific behaviour. Highest-value items.
-- **What NOT to do** — Deprecated patterns, anti-patterns from older versions that still appear in training data.
+1. **Load the skeleton.** `read_collection_context`. If the context is empty, write the skeleton from [format.md](references/format.md) with Meta filled in (`write_collection_context`, once). If sources were collected in this session, the skeleton includes their `(saved)` ledger lines already.
+2. **Find undigested sources.** Every `(saved)` line in the `## Sources` ledger is undigested work — this is how a fresh session resumes a half-distilled collection.
+3. **Distil each source in turn:**
+   - `fetch_artifact` for one source
+   - Extract what it contributes — concepts, signatures, config, patterns, gotchas — and fold it into the affected sections with `replace_context_section` (use `create_if_missing: true` for new topic sections)
+   - Flip its ledger line to `(distilled {date})` with a note of what it contributed
+4. **Repeat** until no `(saved)` lines remain, then set Meta's `Updated` date.
+
+What each section captures — and the rule that code is **verbatim**, prose is compressed — is defined in [format.md](references/format.md).
 
 **The bar:** The distilled context should be sufficient to write correct code against this API without reading the raw sources. If an agent loads this context and still produces broken code because of missing information, the distillation isn't done.
 
+Because each source is a separate pass, distillation is interruptible: a future session picks up the ledger and continues where this one stopped.
+
 ### Phase 5: Validate
 
-Before presenting the reference:
+Re-read the finished context (`read_collection_context`) and check:
 
-- Does the context cover the user's specific use case?
+- Does it cover the user's specific use case?
 - Are all code examples syntactically correct for the target version?
 - Are there contradictions between sources? Flag them explicitly.
 - Is anything uncertain? Say so. "The docs say X but this GitHub issue suggests Y as of v3.2" is more useful than false confidence.
+- Is it under the ~300-line budget? If it's outgrown its scope, split the collection per [format.md](references/format.md), "Size and scoping".
+
+For a grounding audit — which claims in the distill are actually anchored to saved sources — offer [verify-distill](../verify-distill/SKILL.md).
 
 ## Variant: Library evaluation
 
@@ -127,10 +138,12 @@ Present the tradeoffs clearly. Don't make the decision — the user knows their 
 
 The collection is alive. When the API ships a new version:
 
-1. Save the changelog and migration guide
-2. Update code examples that have changed
-3. Re-distil the context
-4. Note what version the context reflects
+1. Save the changelog and migration guide to the collection
+2. Distil them like any other source: fetch each, update the affected sections with `replace_context_section`, add ledger lines
+3. Fix code examples that changed, in place, section by section
+4. Update `## Version Notes` and Meta's `Version` / `Updated` fields
+
+Updates are surgical — a version bump touches the sections it changes, nothing else. Re-distil from scratch only if the technology has changed so much the skeleton no longer fits.
 
 This is the whole point of using Sombra over a one-off research session — the reference compounds instead of evaporating.
 

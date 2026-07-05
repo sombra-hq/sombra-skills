@@ -45,3 +45,9 @@ When an item's spec is too detailed for the one-line format, create a supporting
 ```
 
 The artifact holds the full spec (behavioral requirements, file paths, before/after examples, acceptance criteria). The tracker line stays scannable. Simple items still use inline path references only.
+
+## Reports and reviews
+
+Design docs, review findings, migration audits, and benchmark results are artifacts named `{PREFIX}: {title}` (e.g., "AR: PKCE Design Notes"), linked from the relevant item or decision — never pasted into the context document.
+
+All base-format rules apply unchanged: the ~100-line budget, the 5-entry inline Decisions cap with overflow to `{PREFIX}: Decision Log`, archiving completed phases to `{PREFIX}: Archive`, and the compaction pass.

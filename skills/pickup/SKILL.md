@@ -11,6 +11,8 @@ allowed-tools:
   - mcp__claude_ai_Sombra__search_artifacts
   - mcp__claude_ai_Sombra__fetch_artifact
   - mcp__claude_ai_Sombra__replace_context_section
+  - mcp__claude_ai_Sombra__create_artifact
+  - mcp__claude_ai_Sombra__append_to_artifact
   - Bash(git branch --show-current)
   - Bash(git log *)
   - Bash(git diff *)
@@ -56,9 +58,17 @@ If nothing found, suggest creating one with `/sombra:project` or `/sombra:spec`.
 
 Read the collection context with `read_collection_context`. This is the living plan.
 
+**Check for truncation before trusting it.** A context document that has outgrown MCP result limits comes back cut off — signs: the output ends mid-line or mid-section, expected trailing sections (Decisions, Open Questions) are missing, or the client flagged the result as truncated. If truncated:
+
+1. Tell the user the tracker has outgrown its size budget and you're compacting it.
+2. Run the compaction pass from the project [format.md](../project/references/format.md) — archive completed phases, trim Decisions to 5, extract prose into artifacts. `replace_context_section` operates on the full server-side document, so it works even when your read was cut off; target the sections you *can* see first, then re-read.
+3. Re-read the context and confirm it's complete before continuing.
+
 Parse `## Meta` to understand what kind of project this is:
 - **Has Branch/Repo fields** → this is a code spec. Use git-aware behaviour.
 - **No git fields** → this is a general project. Skip git steps.
+
+**Load artifacts lazily.** The tracker lines reference detail artifacts (`→ detail:`, `→ spec:`), the Decision Log, and phase archives. Don't fetch them all — that defeats the index. Fetch only what the session needs: typically the detail artifact for the **next actionable item**, and the Decision Log or Archive only if the user asks about history.
 
 ### 3. Assess what's changed
 
@@ -123,7 +133,7 @@ HP-3: Instruct solicitor. Ref: BC/2026/1234
 Anything changed since we last talked about this?
 ```
 
-Highlight the **next actionable item**. For code specs, if commits suggest items are done, ask the user to confirm before updating.
+Highlight the **next actionable item**. If it references a detail artifact (`→ detail:` / `→ spec:`), fetch that artifact now so the full requirements are in context. For code specs, if commits suggest items are done, ask the user to confirm before updating.
 
 ### 5. Stay connected
 

@@ -110,7 +110,9 @@ Each skill uses Sombra collections as the persistence layer:
 
 - **Collections** organise related material
 - **Context documents** are the distilled, structured view (the spec, the project plan, the API reference)
-- **Artifacts** hold raw material — notes, saved web pages, decision records
+- **Artifacts** hold the depth — item specs, reports, decision history, archived phases, saved web pages
+
+For project and spec trackers, the context document is deliberately kept small — an index of checklist items and pointers, read in full at the start of every session. Detail lives in linked artifacts (`HP-7: Repair Negotiation Strategy`, `AR: Decision Log`, `AR: Archive`) that are fetched only when needed. Completed phases collapse to one-line stubs, and the decision log keeps only recent entries inline, so trackers stay fast to load no matter how long a project runs.
 
 Updates are surgical (`replace_context_section`) rather than full rewrites, so your documents stay clean as they evolve.
 

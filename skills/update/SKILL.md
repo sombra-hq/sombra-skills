@@ -13,6 +13,7 @@ allowed-tools:
   - mcp__claude_ai_Sombra__append_to_context
   - mcp__claude_ai_Sombra__create_artifact
   - mcp__claude_ai_Sombra__update_artifact
+  - mcp__claude_ai_Sombra__append_to_artifact
   - mcp__claude_ai_Sombra__fetch_artifact
   - mcp__claude_ai_Sombra__search_artifacts
   - Bash(git branch --show-current)
@@ -71,9 +72,11 @@ Make all changes in one pass:
 
 1. **Mark completed items** — `replace_context_section` for the affected phase(s) with updated checkboxes
 2. **Add new items** — use the next code from Meta's `Next` counter, then increment it
-3. **Log decisions** — `append_to_context` to the Decisions section with today's date
-4. **Create supporting artifacts** for any new items that cross the complexity threshold (see [project SKILL.md](../project/SKILL.md), "Supporting artifacts for complex items")
-5. **Update Meta** — set the `Updated` date, update `Next` if items were added
+3. **Log decisions** — follow the Decisions flow in [format.md](../project/references/format.md): rewrite the section with the new dated entry, keep at most 5 inline, overflow to the `{PREFIX}: Decision Log` artifact via `append_to_artifact`
+4. **Create linked artifacts** — detail artifacts for new items that cross the complexity threshold (see [project SKILL.md](../project/SKILL.md), "Linked artifacts carry the detail"), and `{PREFIX}: {title}` artifacts for any reports or substantial findings from the session
+5. **Archive finished phases** — if an update completes a phase, collapse it to a stub per format.md's "Archiving completed phases"
+6. **Update Meta** — set the `Updated` date, update `Next` if items were added
+7. **Check size** — if the document exceeds ~150 lines, run the compaction pass from [format.md](../project/references/format.md)
 
 Run the pre-flight checklist from [format.md](../project/references/format.md) before writing.
 

@@ -14,6 +14,7 @@ allowed-tools:
   - mcp__claude_ai_Sombra__append_to_context
   - mcp__claude_ai_Sombra__create_artifact
   - mcp__claude_ai_Sombra__update_artifact
+  - mcp__claude_ai_Sombra__append_to_artifact
   - mcp__claude_ai_Sombra__fetch_artifact
   - mcp__claude_ai_Sombra__search_artifacts
   - Bash(git branch --show-current)
@@ -98,11 +99,11 @@ When resuming or auditing a spec, you can verify items by checking whether the r
 
 This helps catch specs that have drifted from reality.
 
-### 5. Supporting artifacts for complex items
+### 5. Detail artifacts for complex items
 
 Spec items frequently exceed a one-line description — a component overhaul with multiple presentation modes, a migration with find-and-replace rules, a refactor touching many files with specific behavioral changes.
 
-Follow the project skill's supporting artifact pattern. For specs, the artifact should include:
+Follow the project skill's linked-artifact pattern. For specs, the artifact should include:
 
 - Full behavioral spec or requirements
 - Relevant code paths and file listings
@@ -116,6 +117,12 @@ Create the artifact when the item is added to the tracker, not later. Reference 
 ```
 
 Note the dual reference: spec artifact for the full requirements, backtick path for the primary code location. Both serve different resumption needs.
+
+### 6. Reports and reviews as artifacts
+
+Software work generates prose — design docs, review findings, migration audits, benchmark results, incident notes. None of it goes into the context document. Create a `{PREFIX}: {title}` artifact (e.g., "AR: PKCE Design Notes", "AR: Migration Audit — Batch 2") and link it from the relevant item or decision line.
+
+The context document stays a checklist with pointers. Long-running specs accumulate their history in the Decision Log and Archive artifacts, exactly as the project format defines — a spec that spans dozens of items should still read in one screen.
 
 ## Everything else
 
